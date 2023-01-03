@@ -103,27 +103,28 @@ const downloadMap = [
     "AD/AD 1.2.pdf",
     "AD/AD 1.3.pdf",
     "AD/AD 1.4.pdf",
-    "AD/AD 1.5.pdf"
+    "AD/AD 1.5.pdf",
 
+    "AD/RKSI/RKSI-TEXT.pdf",
+    "AD/RKSS/RKSS-TEXT.pdf",
+    "AD/RKPC/RKPC-TEXT.pdf",
+    "AD/RKPK/RKPK-TEXT.pdf",
+    "AD/RKTU/RKTU-TEXT.pdf",
+    "AD/RKNY/RKNY-TEXT.pdf",
+    "AD/RKTN/RKTN-TEXT.pdf",
+    "AD/RKJB/RKJB-TEXT.pdf",
+    "AD/RKJJ/RKJJ-TEXT.pdf",
+    "AD/RKJK/RKJK-TEXT.pdf",
+    "AD/RKJY/RKJY-TEXT.pdf",
+    "AD/RKNW/RKNW-TEXT.pdf",
+    "AD/RKPS/RKPS-TEXT.pdf",
+    "AD/RKPU/RKPU-TEXT.pdf",
+    "AD/RKSM/RKSM-TEXT.pdf",
+    "AD/RKTH/RKTH-TEXT.pdf",
+    "AD/RKTL/RKTL-TEXT.pdf",
+    "AD/RKPD/RKPD-TEXT.pdf"
 ];
 
 downloadMap.forEach(element => {
     download(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/pdf/${element}`), element);
 });
-
-/*
-
-
-
-                pdfName += name[1] + " " + name[2].substring(0, 1);
-            	
-                var temp = name[2].substring(0, 1);
-                if(temp == "0") {
-                    pdfName += " PREFACE";
-                } else if(temp == "1") {
-                    pdfName += " AERODROME INTRODUCTION";
-                }
-                            	
-                pdfName += ".pdf"; 
-            	
-                */
