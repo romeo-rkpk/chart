@@ -6,10 +6,806 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>AIP</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://bootswatch.com/5/morph/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"></script>
+    <script>
+        function getLatestAiracDateList() {
+            const firstDate = dayjs('2022-12-28', 'YYYY-MM-DD');
+            const now = dayjs().startOf('day');
+
+            var diffDate = now.diff(firstDate, 'day') % 28;
+
+            var effectiveAirac = now.add(-diffDate, 'day');
+
+            var ret = [];
+
+            while (true) {
+                ret.push(effectiveAirac.format("YYYY-MM-DD"));
+                effectiveAirac = effectiveAirac.add(-28, 'day');
+                if (effectiveAirac.isBefore(firstDate))
+                    break;
+            }
+
+            return ret;
+        }
+
+        function download(filePath) {
+            latestAiracDate = $("#airacList").val();
+
+            window.open(`AIP/${latestAiracDate}/${filePath}`);
+        }
+
+        $(function () {
+            const airacList = getLatestAiracDateList();
+
+            airacList.forEach(e => {
+                $option = $("<option></option>").val(e).text(e);
+                $("#airacList").append($option);
+            })
+
+            console.dir();
+            // alert('a');
+        });
+    </script>
 </head>
 
 <body>
-    test
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">e-AIP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gen" data-bs-toggle="tab" data-bs-target="#gen" role="tab">GEN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#enr" data-bs-toggle="tab" data-bs-target="#enr" role="tab">ENR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ad" data-bs-toggle="tab" data-bs-target="#ad" role="tab">AD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#charts" data-bs-toggle="tab" data-bs-target="#charts"
+                            role="tab">CHARTS</a>
+                    </li>
+                    <!--
+                    <li class="nav-item"><a class="nav-link" href="#">RKSI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKSS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKPC</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKPK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKTU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKNY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKTN</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKJB</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKJJ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKJK</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKJY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKNW</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKPS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKPU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKSM</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKTH</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKTL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">RKPD</a></li>
+                    -->
+
+                    <!--
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+                <form class="d-flex">
+                    <div class="input-group">
+                        <span class="badge bg-secondary">AIRAC: </span>
+                        <div class="form-group">
+                            <select class="form-select form-select-sm" id="airacList"></select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container tab-content p-2">
+        <div id="gen" class="tab-pane fade" role="tabpanel">
+            <h4>GEN</h4>
+            <table class="table table-bordered table-hover">
+                <tr class="table-active">
+                    <th>GEN 0</th>
+                    <td>PREFACE</td>
+                </tr>
+                <tr>
+                    <td>GEN 0.1</td>
+                    <td>PREFACE
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.1 PREFACE.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 0.2</td>
+                    <td>RECORD OF AIP AMENDMENTS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.2 RECORD OF AIP AMENDMENTS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 0.3</td>
+                    <td>RECORD OF AIP SUPPLEMENT
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.3 RECORD OF AIP SUPPLEMENTS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 0.4</td>
+                    <td>CHECKLIST OF AIP PAGES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.4 CHECKLIST OF AIP PAGES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 0.5</td>
+                    <td>LIST OF HAND AMENDMENTS TO THE AIP
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.5 LIST OF HAND AMENDMENTS TO THE AIP.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 0.6</td>
+                    <td>TABLE OF CONTENTS TO PART 1
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 0.6 TABLE OF CONTENTS TO PART I.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <th>GEN 1</th>
+                    <td>NATIONAL REGULATIONS AND REQUIREMENTS</td>
+                </tr>
+                <tr>
+                    <td>GEN 1.1</td>
+                    <td>DESIGNATED AUTHORITIES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN 1.1 DESIGNATED AUTHORITIES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.2</td>
+                    <td>ENTRY, TRANSIT AND DEPARTURE OF AIRCRAFT
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.2 ENTRY, TRANSIT AND DEPARTURE AIRCRAFT.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.3</td>
+                    <td>ENTRY, TRANSIT AND DEPARTURE OF PASSENGERS AND CREW
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.3 ENTRY, TRANSIT AND DEPARTURE OF PASSENGERS AND CREW.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.4</td>
+                    <td>ENTRY, TRANSIT AND DEPARTURE OF CARGO
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.4 ENTRY, TRANSIT AND DEPARTURE OF CARGO.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.5</td>
+                    <td>AIRCRAFT INSTRUMENTS, EQUIPMENT AND FLIGHT DOCUMENTS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.5 AIRCRAFT INSTRUMENTS, EQUIPMENT AND FLIGHT DOCUMENTS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.6</td>
+                    <td>SUMMARY OF NATIONAL REGULATIONS AND INTERNATIONAL AGREEMENTS/CONVENTIONS<button
+                            class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.6 SUMMARY OF NATIONAL REGULATIONS AND INTERNATIONAL  AGREEMENTS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 1.7</td>
+                    <td>DIFFERENCES FROM ICAO STANDARDS, RECOMMENDED PRACTICES AND PROCEDURES<button
+                            class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 1.7 DIFFERNCES FROM ICAO STANDARDS, RECOMMENDED.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <th>GEN 2</th>
+                    <td>TABLES AND CODES</td>
+                </tr>
+                <tr>
+                    <td>GEN 2.1</td>
+                    <td>MEASURING SYSTEM, AIRCRAFT MARKINGS, HOLIDAYS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.1 MEASURING SYSTEM, AIRCRAFT MARKINGS, HOLYDAYS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.2</td>
+                    <td>ABBREVIATIONS USED IN AIS PUBLICATIONS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.2 ABBREVIATIONS USED IN AIS PUBLICATIONS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.3</td>
+                    <td>CHART SYMBOLS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.3 CHART SYMBOLS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.4</td>
+                    <td>LOCATION INDICATORS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.4 LOCATION INDICATORS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.5</td>
+                    <td>LIST OF RADIO NAVIGATION AIDS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.5 LIST OF RADIO NAVIGATION AIDS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.6</td>
+                    <td>CONVERSIONS OF UNITS OF MEASUREMENT
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.6 CONVERSION OF UNITS OF MEASUREMENT.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 2.7</td>
+                    <td>SUNRISE/SUNSET
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 2.7 SUNRISE SUNSET.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <th>GEN 3</th>
+                    <td>SERVICES</td>
+                </tr>
+                <tr>
+                    <td>GEN 3.1</td>
+                    <td>AERONAUTICAL INFORMATION SERVICES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.1 AERONAUTICAL INFORMATION SERVICES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 3.2</td>
+                    <td>AERONAUTICAL CHARTS
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.2 AERONAUTICAL CHARTS.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 3.3</td>
+                    <td>AIR TRAFFIC SERVICES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.3 AIRTRAFFIC SERVICES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 3.4</td>
+                    <td>COMMUNICATIONS SERVICES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.4 COMMUNICATIONS SERVICES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 3.5</td>
+                    <td>METEOROLOGICAL SERVICES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.5 METEOROLOGICAL SERVICES.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 3.6</td>
+                    <td>SEARCH AND RESCUE SERVICES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 3.6 SEARCH AND RESCUE.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr class="table-active">
+                    <th>GEN 4</th>
+                    <td>CHARGES FOR AERODROMES/HELIPORTS AND AIR NAVIGATION SERVICES</td>
+                </tr>
+                <tr>
+                    <td>GEN 4.1</td>
+                    <td>AERODROME CHARGES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 4.1 AERODROME CHARGE.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>GEN 4.2</td>
+                    <td>AIR NAVIGATION SERVICES CHARGES
+                        <button class="btn btn-sm small mx-1"
+                            onclick="download('GEN/GEN 4.2 AIR NAVIGATION SERVICES CHARGES.pdf')">View</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="enr" role="tabpanel">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>ENR 0</td>
+                    <td>TABLE OF CONTENTS TO PART 2</td>
+                </tr>
+                <tr>
+                    <td>ENR 0.6</td>
+                    <td>Table of Contents to Part 2
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 0.6.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1</td>
+                    <td>GENERAL RULES AND PROCEDURES </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.1</td>
+                    <td>GENERAL RULES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.2</td>
+                    <td>VISUAL FLIGHT RULES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.3</td>
+                    <td>INSTRUMENT FLIGHTS RULES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.3.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.4</td>
+                    <td>ATS AIRSPACE CLASSIFICATION AND DESCRIPTION
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.4.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.5</td>
+                    <td>HOLDING, APPROACH AND DEPARTURE PROCEDURES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.5.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.6</td>
+                    <td>ATC SURVEILLANCE
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.6.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.7</td>
+                    <td>ALTIMETER SETTING PROCEDURES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.7.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.8</td>
+                    <td>REGIONAL SUPPLEMENTARY PROCEDURES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.8.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.9</td>
+                    <td>AIR TRAFFIC FLOW MANAGEMENT AND AIRSPACE MANAGEMENT
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.9.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.10</td>
+                    <td>FLIGHT PLANNING
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.10.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.11</td>
+                    <td>ADDRESSING OF FLIGHT PLAN MESSAGES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.11.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.12</td>
+                    <td>INTERCEPTION OF CIVIL AIRCRAFT
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.12.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.13</td>
+                    <td>UNLAWFUL INTERFERENCE
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.13.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 1.14</td>
+                    <td>AIR TRAFFIC INCIDENTS
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 1.14.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 2</td>
+                    <td>AIR TRAFFIC SERVICES AIRSPACE</td>
+                </tr>
+                <tr>
+                    <td>ENR 2.1</td>
+                    <td>AIR TRAFFIC SERVICES AIRSPACE
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 2.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 2.2</td>
+                    <td>OTHER REGULATED AIRSPACE
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 2.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 3</td>
+                    <td>ROUTES</td>
+                </tr>
+                <tr>
+                    <td>ENR 3.1</td>
+                    <td>CONVENTIONAL NAVIGATION ROUTES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 3.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 3.2</td>
+                    <td>AREA NAVIGATION (RNAV) ROUTES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 3.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 3.3</td>
+                    <td>OTHER ROUTES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 3.3.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 3.4</td>
+                    <td>EN-ROUTE HOLDING
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 3.4.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 4</td>
+                    <td>RADIO NAVIGATION AIDS/SYSTEMS</td>
+                </tr>
+                <tr>
+                    <td>ENR 4.1</td>
+                    <td>RADIO NAVIGATION AIDS/SYSTEMS
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 4.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 4.2</td>
+                    <td>SPECIAL NAVIGATION SYSTEM
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 4.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 4.3</td>
+                    <td>GLOBAL NAVIGATION SATELLITE SYSTEM(GNSS)
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 4.3.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 4.4</td>
+                    <td>NAME-CODE DESIGNATORS FOR SIGNIFICANT POINTS
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 4.4.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 4.5</td>
+                    <td>AERONAUTICAL GROUND LIGHTS - ENROUTE
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 4.5.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5</td>
+                    <td>NAVIGATION WARNINGS</td>
+                </tr>
+                <tr>
+                    <td>ENR 5.1</td>
+                    <td>NAVIGATION WARNING
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5.2</td>
+                    <td>MILITARY EXERCISE AND TRAINING AREAS AND AIR DEFFENCE IDENTIFICATION ZONE(ADIZ)
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5.3</td>
+                    <td>OTHER ACTIVITIES OF A DANGEROUS NATURE AND OTHER POTENTIAL HAZARDS
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.3.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5.4</td>
+                    <td>AIR NAVIGATION OBSTACLES - EN-ROUTE (Height 100m AGL or higher)
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.4.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5.5</td>
+                    <td>AERIAL SPORTING AND RECREATIONAL ACTIVITIES
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.5.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 5.6</td>
+                    <td>BIRD MIGRATION AND AREAS WITH SENSITIVE FAUNA
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 5.6.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ENR 6</td>
+                    <td>EN-ROUTE CHARTS</td>
+                </tr>
+                <tr>
+                    <td>ENR 6.1</td>
+                    <td>EN-ROUTE CHARTS
+                        <button class="btn btn-sm small mx-1" onclick="download('ENR/ENR 6.1.pdf')">View</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="ad" role="tabpanel">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>AD 0</td>
+                    <td>PREFACE</td>
+                </tr>
+                <tr>
+                    <td>AD 0.6</td>
+                    <td>Table of Contents to Part 3
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 0.6.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD 1</td>
+                    <td>AERODROME - INTRODUCTION</td>
+                </tr>
+                <tr>
+                    <td>AD 1.1</td>
+                    <td>AERODROME - INTRODUCTION
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 1.1.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD 1.2</td>
+                    <td>RESCUE AND FIRE FIGHTING SERVICES, SNOW PLAN AND RUNWAY SURFACE CONDITION ASSESSMENT AND
+                        REPORTING
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 1.2.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD 1.3</td>
+                    <td>INDEX TO AERODROMES
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 1.3.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD 1.4</td>
+                    <td>GROUPING OF AERODROMES
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 1.4.pdf')">View</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AD 1.5</td>
+                    <td>STATUS OF CERTIFICATION ON AERODROME
+                        <button class="btn btn-sm small mx-1" onclick="download('AD/AD 1.5.pdf')">View</button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="charts" role="tabpanel">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>AIRPORT</td>
+                        <th>TEXT</th>
+                        <th>SID</th>
+                        <th>STAR</th>
+                        <th>INSTR APCH</th>
+                        <th>VIS APCH</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>RKSI</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSI/RKSI-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSI/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSI/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSI/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSI/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKSS</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSS/RKSS-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSS/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSS/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSS/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSS/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKPC</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPC/RKPC-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPC/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPC/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPC/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPC/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKPK</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPK/RKPK-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPK/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPK/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPK/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPK/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKTU</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTU/RKTU-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTU/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTU/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTU/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTU/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKNY</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNY/RKNY-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNY/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNY/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNY/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNY/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKTN</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTN/RKTN-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTN/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTN/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTN/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTN/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKJB</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJB/RKJB-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJB/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJB/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJB/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJB/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKJJ</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJJ/RKJJ-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJJ/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJJ/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJJ/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJJ/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKJK</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJK/RKJK-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJK/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJK/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJK/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJK/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKJY</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJY/RKJY-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJY/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJY/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJY/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKJY/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKNW</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNW/RKNW-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNW/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNW/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNW/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKNW/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKPS</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPS/RKPS-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPS/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPS/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPS/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPS/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKPU</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPU/RKPU-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPU/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPU/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPU/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPU/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKSM</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSM/RKSM-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSM/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSM/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSM/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKSM/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKTH</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTH/RKTH-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTH/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTH/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTH/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTH/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKTL</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTL/RKTL-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTL/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTL/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTL/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKTL/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>RKPD</td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPD/RKPD-TEXT.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPD/SID.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPD/STAR.pdf')">View</button></td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPD/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td><button class="btn btn-sm" onclick="download('AD/RKPD/VISUAL APCH CHART.pdf')">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </body>
 
 </html>
