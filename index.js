@@ -141,7 +141,7 @@ const downloadMap = [
 ];
 
 downloadMap.forEach(element => {
-    // download(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/pdf/${element}`), element);
+    download(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/pdf/${element}`), element);
 });
 
 const airportList = [
@@ -176,7 +176,7 @@ airportList.forEach(airport => {
             url = url.split("http://").join("https://");
             let text = $pdfList.eq(a).text().trim();
 
-            download(url, `${airport}/${text}.pdf`);
+            download(url, `AD/${airport}/${text}.pdf`);
         }
     });
 });
