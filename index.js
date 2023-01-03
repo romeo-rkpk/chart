@@ -2,11 +2,26 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 const dayjs = require('dayjs');
+const cheerio = require('cheerio');
 
 function download(url, filePath) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     https.get(url, (response) => {
         response.pipe(fs.createWriteStream(filePath));
+    });
+}
+
+function downloadText(url, callback) {
+    https.get(url, (res) => {
+        let body = '';
+
+        res.on('data', (data) => {
+            body += data.toString();
+        });
+
+        res.on('end', () => {
+            callback(body);
+        });
     });
 }
 
@@ -126,5 +141,44 @@ const downloadMap = [
 ];
 
 downloadMap.forEach(element => {
-    download(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/pdf/${element}`), element);
+    // download(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/pdf/${element}`), element);
 });
+
+const airportList = [
+    "RKSI",
+    "RKSS",
+    "RKPC",
+    "RKPK",
+    "RKTU",
+    "RKNY",
+    "RKTN",
+    "RKJB",
+    "RKJJ",
+    "RKJK",
+    "RKJY",
+    "RKNW",
+    "RKPS",
+    "RKPU",
+    "RKSM",
+    "RKTH",
+    "RKTL",
+    "RKPD"
+];
+
+airportList.forEach(airport => {
+    downloadText(encodeURI(`https://aim.koca.go.kr/eaipPub/Package/${latestAiracDate}-AIRAC/html/eAIP/KR-AD-2.${airport}-en-GB.html`), function (body) {
+        const $ = cheerio.load(body);
+        const $pdfList = $("a[href$=\\.pdf]");
+
+        for (var a = 0; a < $pdfList.length; a++) {
+            let url = $pdfList.eq(a).attr('href');
+            if (url[0] == '/') url = "https://aim.koca.go.kr" + url;
+            url = url.split("http://").join("https://");
+            let text = $pdfList.eq(a).text().trim();
+
+            download(url, `${airport}/${text}.pdf`);
+        }
+    });
+});
+
+
