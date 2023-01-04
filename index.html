@@ -45,8 +45,7 @@
                 $("#airacList").append($option);
             })
 
-            console.dir();
-            // alert('a');
+            $("#charts").click();
         });
     </script>
 </head>
@@ -71,56 +70,20 @@
                         <a class="nav-link" href="#ad" data-bs-toggle="tab" data-bs-target="#ad" role="tab">AD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#charts" data-bs-toggle="tab" data-bs-target="#charts"
-                            role="tab">CHARTS</a>
+                        <a class="nav-link active" href="#charts" data-bs-toggle="tab" data-bs-target="#charts"
+                            role="tab" aria-selected="true">CHARTS</a>
                     </li>
-                    <!--
-                    <li class="nav-item"><a class="nav-link" href="#">RKSI</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKSS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKPC</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKPK</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKTU</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKNY</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKTN</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKJB</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKJJ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKJK</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKJY</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKNW</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKPS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKPU</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKSM</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKTH</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKTL</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">RKPD</a></li>
-                    -->
-
-                    <!--
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
-                    -->
                 </ul>
                 <form class="d-flex">
                     <div class="input-group">
-                        <span class="badge bg-secondary">AIRAC: </span>
-                        <div class="form-group">
-                            <select class="form-select form-select-sm" id="airacList"></select>
-                        </div>
+                        <span class="input-group-text">AIRAC</span>
+                        <select class="form-select" id="airacList"></select>
                     </div>
                 </form>
             </div>
         </div>
     </nav>
-    <div class="container tab-content p-2">
+    <div class="container-fluid tab-content p-2">
         <div id="gen" class="tab-pane fade" role="tabpanel">
             <h4>GEN</h4>
             <table class="table table-bordered table-hover">
@@ -345,8 +308,8 @@
 
         <div class="tab-pane fade" id="enr" role="tabpanel">
             <table class="table table-bordered table-hover">
-                <tr>
-                    <td>ENR 0</td>
+                <tr class="table-active">
+                    <th>ENR 0</th>
                     <td>TABLE OF CONTENTS TO PART 2</td>
                 </tr>
                 <tr>
@@ -355,8 +318,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 0.6.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 1</td>
+                <tr class="table-active">
+                    <th>ENR 1</th>
                     <td>GENERAL RULES AND PROCEDURES </td>
                 </tr>
                 <tr>
@@ -443,8 +406,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 1.14.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 2</td>
+                <tr class="table-active">
+                    <th>ENR 2</th>
                     <td>AIR TRAFFIC SERVICES AIRSPACE</td>
                 </tr>
                 <tr>
@@ -459,8 +422,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 2.2.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 3</td>
+                <tr class="table-active">
+                    <th>ENR 3</th>
                     <td>ROUTES</td>
                 </tr>
                 <tr>
@@ -487,8 +450,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 3.4.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 4</td>
+                <tr class="table-active">
+                    <th>ENR 4</th>
                     <td>RADIO NAVIGATION AIDS/SYSTEMS</td>
                 </tr>
                 <tr>
@@ -521,8 +484,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 4.5.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 5</td>
+                <tr class="table-active">
+                    <th>ENR 5</th>
                     <td>NAVIGATION WARNINGS</td>
                 </tr>
                 <tr>
@@ -561,8 +524,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('ENR/ENR 5.6.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>ENR 6</td>
+                <tr class="table-active">
+                    <th>ENR 6</th>
                     <td>EN-ROUTE CHARTS</td>
                 </tr>
                 <tr>
@@ -576,8 +539,8 @@
 
         <div class="tab-pane fade" id="ad" role="tabpanel">
             <table class="table table-bordered table-hover">
-                <tr>
-                    <td>AD 0</td>
+                <tr class="table-active">
+                    <th>AD 0</th>
                     <td>PREFACE</td>
                 </tr>
                 <tr>
@@ -586,8 +549,8 @@
                         <button class="btn btn-sm btn-primary" onclick="download('AD/AD 0.6.pdf')">View</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>AD 1</td>
+                <tr class="table-active">
+                    <th>AD 1</th>
                     <td>AERODROME - INTRODUCTION</td>
                 </tr>
                 <tr>
@@ -625,181 +588,736 @@
             </table>
         </div>
 
-        <div class="tab-pane fade" id="charts" role="tabpanel">
-            <table class="table table-bordered table-hover">
+        <div class="tab-pane fade active show" id="charts" role="tabpanel">
+            <table class="table table-bordered table-hover text-center align-middle">
                 <thead>
-                    <tr>
-                        <th>AIRPORT</td>
+                    <tr class="table-dark">
+                        <th>AIRPORT</th>
                         <th>TEXT</th>
+                        <th>AD</th>
+                        <th>GND MOVE</th>
+                        <th>PARKING</th>
                         <th>SID</th>
                         <th>STAR</th>
                         <th>INSTR APCH</th>
                         <th>VIS APCH</th>
+                        <th>ETC</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
                         <td>RKSI</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/RKSI-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/RKSI-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKSI/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AREA CHART - ICAO (DEP).pdf')">AREA (DEP)</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/AREA CHART - ICAO (ARR).pdf')">AREA (ARR)</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/PRECISION APP TERRAIN CHART.pdf')">TERRAIN</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSI/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKSS</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/RKSS-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/RKSS-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKSS/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AREA CHART - ICAO (DEP).pdf')">AREA (DEP)</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/AREA CHART - ICAO (ARR).pdf')">AREA (ARR)</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/PRECISION APP TERRAIN CHART.pdf')">TERRAIN</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSS/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKPC</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/RKPC-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/RKPC-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPC/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/PRECISION APP TERRAIN CHART.pdf')">TERRAIN</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPC/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKPK</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/RKPK-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/RKPK-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPK/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/PRECISION APP TERRAIN CHART.pdf')">TERRAIN</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPK/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKTU</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/RKTU-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/RKTU-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTU/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTU/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKNY</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/RKNY-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/RKNY-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKNY/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNY/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKTN</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/RKTN-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/RKTN-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTN/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTN/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKJB</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/RKJB-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/RKJB-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJB/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJB/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKJJ</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/RKJJ-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/RKJJ-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJJ/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJJ/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKJK</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/RKJK-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJK/RKJK-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJK/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJK/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJK/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJK/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKJY</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/RKJY-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/RKJY-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/AD GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKJY/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKJY/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKNW</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/RKNW-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNW/RKNW-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNW/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNW/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKNW/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNW/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKNW/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKPS</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/RKPS-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPS/RKPS-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPS/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPS/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPS/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPS/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPS/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKPU</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/RKPU-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/RKPU-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPU/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/AD OBSTACLE CHART TYPE A.pdf')">OBSTACLE A</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/AD OBSTACLE CHART TYPE B.pdf')">OBSTACLE B</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPU/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKSM</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/RKSM-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSM/RKSM-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSM/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKSM/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKSM/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKTH</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/RKTH-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/RKTH-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTH/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/AREA CHART.pdf')">AREA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/ATC SURVEILLANCE MINIMUM ALTITUDE CHART.pdf')">MSA</button>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKTL</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/RKTL-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/RKTL-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/AERODROME GROUND MOVEMENT CHART GROUND MOVEMENT CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/AIRCRAFT PARKING DOCKING CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKTL/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTL/VISUAL APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKTH/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>RKPD</td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/RKPD-TEXT.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/SID.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/STAR.pdf')">View</button></td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/INSTR APCH CHART.pdf')">View</button>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPD/RKPD-TEXT.pdf')">View</button>
                         </td>
-                        <td><button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/VISUAL APCH CHART.pdf')">View</button></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPD/AD CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/SID.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="download('AD/RKPD/STAR.pdf')">View</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPD/INSTR APCH CHART.pdf')">View</button>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                onclick="download('AD/RKPD/BIRD CONCENTRATION CHART.pdf')">BIRD</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
