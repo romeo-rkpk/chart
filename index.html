@@ -50,6 +50,29 @@
             window.open(`AIP/${latestAiracDate}/${filePath}`);
         }
 
+        function updateMetarAndRunway() {
+            $.getJSON('https://airplane.mywire.org/metar.json', (airportList) => {
+                for (airport in airportList) {
+                    var $template = $("<tr><th></th><td></td><td class='text-start'></td></tr>");
+                    $template.attr("airport", airport);
+                    $template.find("th").text(airport);
+                    $template.find("td").eq(1).text(airportList[airport].metar);
+                    $template.appendTo("#metar tbody");
+                }
+                $.getJSON('https://airplane.mywire.org/runway.json', (runwayList) => {
+                    for (airport in runwayList) {
+                        var runwayStringList = [];
+                        for (runway in runwayList[airport]) {
+                            if(runwayList[airport][runway].use)
+                                runwayStringList.push(`${runway}`);
+                        }
+                        console.log(runwayStringList.join(", "));
+                        $(`#metar tbody tr[airport=${airport}]`).find("td").eq(0).text(runwayStringList.join(", "))
+                    }
+                });
+            });
+        }
+
         $(function () {
             const airacList = getLatestAiracDateList();
 
@@ -58,7 +81,7 @@
                 $("#airacList").append($option);
             })
 
-            $("#charts").click();
+            updateMetarAndRunway();
         });
     </script>
 </head>
@@ -83,8 +106,12 @@
                         <a class="nav-link" href="#ad" data-bs-toggle="tab" data-bs-target="#ad" role="tab">AD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#charts" data-bs-toggle="tab" data-bs-target="#charts"
-                            role="tab" aria-selected="true">CHARTS</a>
+                        <a class="nav-link active" href="#chart" data-bs-toggle="tab" data-bs-target="#chart" role="tab"
+                            aria-selected="true">CHART</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#metar" data-bs-toggle="tab" data-bs-target="#metar"
+                            role="tab">METAR</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -662,7 +689,7 @@
             </table>
         </div>
 
-        <div class="tab-pane fade active show overflow-auto" id="charts" role="tabpanel">
+        <div class="tab-pane fade active show overflow-auto" id="chart" role="tabpanel">
             <table class="table table-bordered table-hover text-center align-middle">
                 <thead>
                     <tr class="table-dark">
@@ -1658,6 +1685,23 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="tab-pane fade" id="metar" role="tabpanel">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead>
+                    <tr class="table-dark">
+                        <th>AIRPORT</th>
+                        <th>ACTIVE RUNWAY</th>
+                        <th>METAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
 
     </div>
 </body>
